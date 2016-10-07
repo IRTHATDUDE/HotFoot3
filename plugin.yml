@@ -1,0 +1,17 @@
+main: kyloka.hotfootpls.Main
+name: Hotfoot
+authors: [nayoshi12, zLokkiN]
+version: 0.2
+commands:
+  hfjoin:
+    description: To join the game!
+  hfleave:
+    description: To leave the game!
+  hfcreate:
+    description: to create a region!
+  hftest:
+    description: same
+  hfstart:
+    description: same
+  hfstop:
+    description: same
