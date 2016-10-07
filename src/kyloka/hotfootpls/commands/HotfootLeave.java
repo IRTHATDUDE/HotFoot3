@@ -1,9 +1,13 @@
 package kyloka.hotfootpls.commands;
 
+import kyloka.hotfootpls.players.PlayPlayer;
 import org.bukkit.ChatColor;
 import org.bukkit.command.*;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Matthew on 10/3/2016.
@@ -14,9 +18,20 @@ public class HotfootLeave implements CommandExecutor {
         if(command.getName().equalsIgnoreCase("hfleave")){
             if(!(sender instanceof Player))sender.sendMessage(ChatColor.RED + "Cannot execute command in console");
             Player player = (Player) sender;
+            if(args.length == 0){
+                player.sendMessage("Please specify the arena you are in.");
+                return false;
+            }
+            List<PlayPlayer> same = new ArrayList<>();
+            same.add(kyloka.hotfootpls.commands.Command.getPlayPlayers0());
+            same.add(kyloka.hotfootpls.commands.Command.getPlayPlayers1());
+            same.add(kyloka.hotfootpls.commands.Command.getPlayPlayers2());
+            same.add(kyloka.hotfootpls.commands.Command.getPlayPlayers3());
+
+            int f = Integer.parseInt(args[0]);
             try{
-                player.teleport(kyloka.hotfootpls.commands.Command.players.getPrevCoords(player));
-                kyloka.hotfootpls.commands.Command.players.removePlayer(player);
+                player.teleport(same.get(f).getPrevCoords(player));
+                same.get(f).removePlayer(player);
 
                 player.sendMessage(ChatColor.GREEN + "You have left hotfoot!");
             }catch (Exception e){

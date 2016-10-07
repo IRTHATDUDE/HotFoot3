@@ -29,12 +29,20 @@ public class Command {
 
     public static void registerCommands(){
 
+
+
         instance.getCommand("hfjoin").setExecutor(new HotfootJoin());
         instance.getCommand("hfleave").setExecutor(new HotfootLeave());
         instance.getCommand("hfcreate").setExecutor(new HotfootCreate());
         instance.getCommand("hfstart").setExecutor(new HotfootStart());
         instance.getCommand("hftest").setExecutor(new HotfootTest());
         instance.getCommand("hfstop").setExecutor(new HotfootStop());
+
+        Configuration.getDataConfig().set("is.On0",false);
+        Configuration.getDataConfig().set("is.On1",false);
+        Configuration.getDataConfig().set("is.On2",false);
+        Configuration.getDataConfig().set("is.On3",false);
+        Configuration.saveDataConfig();
     }
     public static PlayPlayer getPlayPlayers0(){
         return players0;
@@ -67,11 +75,5 @@ public class Command {
     public static List<Arena> getSas(){
         return sas;
     }
-    public static void return2Default(){
-        Configuration.getDataConfig().set("is.On0",false);
-        Configuration.getDataConfig().set("is.On1",false);
-        Configuration.getDataConfig().set("is.On2",false);
-        Configuration.getDataConfig().set("is.On3",false);
-        Configuration.saveDataConfig();
-    }
+
 }
