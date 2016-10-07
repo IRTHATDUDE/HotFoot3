@@ -32,9 +32,23 @@ public class RemovePlayerEvent implements Listener {
         Location location = new Location(player.getWorld(),player.getLocation().getX(),player.getLocation().getY()-1,player.getLocation().getZ());
 
         for(int i =0; i < same.size(); i++){
-            
+            PlayPlayer tempVar = same.get(i);
+            if(location.getBlock().getType().equals(Material.BEDROCK) && tempVar.isPlayerOnList(player)
+                    && Configuration.getDataConfig().getBoolean("is.On"+i)
+                    ){
+                player.teleport(tempVar.getPrevCoords(player));
+                tempVar.removePlayer(player);
+                player.sendMessage("You are out of the game!");
+                Bukkit.broadcastMessage(player.getName() + " is out of the game!");
+            }
+            if(tempVar.getListOfPlayers().size()==1 && Configuration.getDataConfig().getBoolean("is.On"+i)){
+                Bukkit.broadcastMessage(ChatColor.GOLD + tempVar.getListOfPlayers().get(0).getName() + ChatColor.GREEN +" is the Winner!");
+                tempVar.removePlayer(tempVar.getListOfPlayers().get(0));
+                Configuration.getDataConfig().set("is.On"+i,false);
+                Configuration.saveDataConfig();
+            }
         }
-
+        /*
         if(location.getBlock().getType().equals(Material.BEDROCK) && Command.getPlayPlayers0().isPlayerOnList(player)
                 && Configuration.getDataConfig().getBoolean("is.On0")
                     ){
@@ -97,7 +111,7 @@ public class RemovePlayerEvent implements Listener {
         }
         //ARENA 1
 
-
+*/
 
 
     }
