@@ -21,7 +21,7 @@ public class HotfootTest implements CommandExecutor {
             }
             Player player = (Player) sender;
             YamlConfiguration dataConfig = Configuration.getDataConfig();
-            Location loc = player.getLocation();
+
 
         }
         return false;

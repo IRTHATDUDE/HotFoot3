@@ -10,5 +10,6 @@ public class Events {
     public static void registerEvents(){
         PluginManager pm = Main.getInstance().getServer().getPluginManager();
         pm.registerEvents(new RemovePlayerEvent(),Main.getInstance());
+        pm.registerEvents(new RemoveBlockUnderPlayerEvent(),Main.getInstance());
     }
 }

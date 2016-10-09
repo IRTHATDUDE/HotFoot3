@@ -5,7 +5,9 @@ import kyloka.hotfootpls.arena.Arena;
 import kyloka.hotfootpls.config.Configuration;
 import kyloka.hotfootpls.events.Editor;
 import kyloka.hotfootpls.players.PlayPlayer;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginManager;
 
 import java.util.ArrayList;
@@ -23,7 +25,12 @@ public class Command {
     static Editor editor = new Editor();
     static Location loc1;
     static Location loc2;
-    static List<Arena> sas = new ArrayList<>();
+    static Arena arena0 = new Arena("1");
+    static Arena arena1 = new Arena("2");
+    static Arena arena2 = new Arena("3");
+    static Arena arena3 = new Arena("4");
+
+
 
 
 
@@ -37,12 +44,44 @@ public class Command {
         instance.getCommand("hfstart").setExecutor(new HotfootStart());
         instance.getCommand("hftest").setExecutor(new HotfootTest());
         instance.getCommand("hfstop").setExecutor(new HotfootStop());
-
+        instance.getCommand("hfpos1").setExecutor(new HotfootPos1());
+        instance.getCommand("hfpos2").setExecutor(new HotfootPos2());
+        instance.getCommand("hflist").setExecutor(new HotfootList());
         Configuration.getDataConfig().set("is.On0",false);
+
         Configuration.getDataConfig().set("is.On1",false);
+
         Configuration.getDataConfig().set("is.On2",false);
+
         Configuration.getDataConfig().set("is.On3",false);
         Configuration.saveDataConfig();
+        registerArena();
+    }
+    public static void registerArena(){
+        YamlConfiguration dataConfig = Configuration.getDataConfig();
+        if((!(dataConfig.getInt("1.pos1.x") == 0))||(!(dataConfig.getInt("1.pos2.x")==0))){
+
+            double loc1X = dataConfig.getDouble("1.pos1.x");
+            double loc1Y= dataConfig.getDouble("1.pos1.y");
+            double loc1Z= dataConfig.getDouble("1.pos1.z");
+            String loc1World = dataConfig.getString("1.pos1.world");
+            String loc2World = dataConfig.getString("1.pos1.world");
+            double loc2X = dataConfig.getDouble("1.pos2.x");
+            double loc2Y= dataConfig.getDouble("1.pos2.y");
+            double loc2Z= dataConfig.getDouble("1.pos2.z");
+            Location tempLoc1 = new Location(Bukkit.getWorld(loc1World),loc1X,loc1Y,loc1Z);
+            Location tempLoc2 = new Location(Bukkit.getWorld(loc2World),loc2X,loc2Y,loc2Z);
+
+            if(!loc1World.equalsIgnoreCase(loc2World)){
+                return;
+            }
+
+
+            arena0.setLocation1(tempLoc1);
+            arena0.setLocation2(tempLoc2);
+        }
+
+
     }
     public static PlayPlayer getPlayPlayers0(){
         return players0;
@@ -72,8 +111,10 @@ public class Command {
     public Location getLoc2(){
         return loc2;
     }
-    public static List<Arena> getSas(){
-        return sas;
-    }
+    public static Arena getArena0(){return arena0;};
+    public static Arena getArena1(){return arena1;};
+    public static Arena getArena2(){return arena2;};
+    public static Arena getArena3(){return arena3;};
+
 
 }

@@ -71,11 +71,6 @@ public class Configuration {
         }
     }
     public static YamlConfiguration getDataConfig(){
-        try{
-            dataConfig.load(dataFile);
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
 
         return dataConfig;
     }

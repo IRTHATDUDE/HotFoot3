@@ -3,6 +3,7 @@ package kyloka.hotfootpls;
 import kyloka.hotfootpls.commands.Command;
 import kyloka.hotfootpls.config.Configuration;
 import kyloka.hotfootpls.events.Events;
+import kyloka.hotfootpls.events.RemoveBlockRandomly;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -17,6 +18,7 @@ public class Main extends JavaPlugin {
         Configuration.loadAllConfigs();
         Command.registerCommands();
         Events.registerEvents();
+        RemoveBlockRandomly.justDoIt();
     }
 
     @Override
