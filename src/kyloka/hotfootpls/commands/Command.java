@@ -34,13 +34,14 @@ public class Command {
 
 
 
+
     public static void registerCommands(){
 
 
 
         instance.getCommand("hfjoin").setExecutor(new HotfootJoin());
         instance.getCommand("hfleave").setExecutor(new HotfootLeave());
-        instance.getCommand("hfcreate").setExecutor(new HotfootCreate());
+        //instance.getCommand("hfcreate").setExecutor(new HotfootCreate());
         instance.getCommand("hfstart").setExecutor(new HotfootStart());
         instance.getCommand("hftest").setExecutor(new HotfootTest());
         instance.getCommand("hfstop").setExecutor(new HotfootStop());
@@ -59,26 +60,33 @@ public class Command {
     }
     public static void registerArena(){
         YamlConfiguration dataConfig = Configuration.getDataConfig();
-        if((!(dataConfig.getInt("1.pos1.x") == 0))||(!(dataConfig.getInt("1.pos2.x")==0))){
+        List<Arena> same = new ArrayList<>();
+        same.add(kyloka.hotfootpls.commands.Command.getArena0());
+        same.add(kyloka.hotfootpls.commands.Command.getArena1());
+        same.add(kyloka.hotfootpls.commands.Command.getArena2());
+        same.add(kyloka.hotfootpls.commands.Command.getArena3());
+        for(int i = 1; i < 5; i++){
+            if((!(dataConfig.getInt(i+".pos1.x") == 0))||(!(dataConfig.getInt(i+".pos2.x")==0))){
 
-            double loc1X = dataConfig.getDouble("1.pos1.x");
-            double loc1Y= dataConfig.getDouble("1.pos1.y");
-            double loc1Z= dataConfig.getDouble("1.pos1.z");
-            String loc1World = dataConfig.getString("1.pos1.world");
-            String loc2World = dataConfig.getString("1.pos1.world");
-            double loc2X = dataConfig.getDouble("1.pos2.x");
-            double loc2Y= dataConfig.getDouble("1.pos2.y");
-            double loc2Z= dataConfig.getDouble("1.pos2.z");
-            Location tempLoc1 = new Location(Bukkit.getWorld(loc1World),loc1X,loc1Y,loc1Z);
-            Location tempLoc2 = new Location(Bukkit.getWorld(loc2World),loc2X,loc2Y,loc2Z);
+                double loc1X = dataConfig.getDouble(i+".pos1.x");
+                double loc1Y= dataConfig.getDouble(i+".pos1.y");
+                double loc1Z= dataConfig.getDouble(i+".pos1.z");
+                String loc1World = dataConfig.getString(i+".pos1.world");
+                String loc2World = dataConfig.getString(i+".pos1.world");
+                double loc2X = dataConfig.getDouble(i+".pos2.x");
+                double loc2Y= dataConfig.getDouble(i+".pos2.y");
+                double loc2Z= dataConfig.getDouble(i+".pos2.z");
+                Location tempLoc1 = new Location(Bukkit.getWorld(loc1World),loc1X,loc1Y,loc1Z);
+                Location tempLoc2 = new Location(Bukkit.getWorld(loc2World),loc2X,loc2Y,loc2Z);
 
-            if(!loc1World.equalsIgnoreCase(loc2World)){
-                return;
+                if(!loc1World.equalsIgnoreCase(loc2World)){
+                    return;
+                }
+
+
+                same.get(i-1).setLocation1(tempLoc1);
+                same.get(i-1).setLocation2(tempLoc2);
             }
-
-
-            arena0.setLocation1(tempLoc1);
-            arena0.setLocation2(tempLoc2);
         }
 
 

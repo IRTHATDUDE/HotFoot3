@@ -23,7 +23,8 @@ package kyloka.hotfootpls.events;
 public class RemoveBlockUnderPlayerEvent implements Listener {
 
     @EventHandler
-    public void replaceBlockBelowPlayer(PlayerMoveEvent e){
+    public void replaceBlockBelowPlayer1(PlayerMoveEvent e){
+        Bukkit.broadcastMessage("hi:1");
         Player player = e.getPlayer();
         YamlConfiguration dataConfig =  Configuration.getDataConfig();
         Location from = player.getLocation();
@@ -111,5 +112,269 @@ public class RemoveBlockUnderPlayerEvent implements Listener {
 
 
     }
+    public void replaceBlockBelowPlayer2(PlayerMoveEvent e){
+        Bukkit.broadcastMessage("hi:2");
+        Player player = e.getPlayer();
+        YamlConfiguration dataConfig =  Configuration.getDataConfig();
+        Location from = player.getLocation();
 
+        if(!Command.getPlayPlayers1().isPlayerOnList(player)){
+
+            return;
+        }
+        Bukkit.broadcastMessage("hi:2");
+        World world = player.getWorld();
+        double x = player.getLocation().getX();
+        double y = player.getLocation().getY();
+        double z = player.getLocation().getZ();
+        //if (world.getBlockAt(new Location(world,x,y-1,z)).getType() == Material.WOOL){
+        World loc1World,loc2World;
+
+        int pos1x,pos1y,pos1z,pos2x,pos2y,pos2z,length,width,area;
+        List<Block> blockArray = new ArrayList<Block>();
+        Location loc1= Command.getArena1().getLocation1();
+        Location loc2 = Command.getArena1().getLocation2();
+        loc1World = loc1.getWorld();
+        loc2World = loc2.getWorld();
+        pos1x = (int)loc1.getX();
+        pos1y = (int)loc1.getY();
+        pos1z = (int)loc1.getZ();
+        pos2x = (int)loc2.getX();
+        pos2y = (int)loc2.getY();
+        pos2z = (int)loc2.getZ();
+        double lessX,moreX,lessZ,moreZ;
+
+        if (pos1x > pos2x){
+            lessX = (double)pos2x;
+            moreX = (double)pos1x;
+        }
+        else{
+            lessX =(double)pos1x;
+            moreX = (double)pos2x;
+        }
+        if (pos1z > pos2z){
+            lessZ = (double)pos2z;
+            moreZ = (double)pos1z;
+        }
+        else{
+            lessZ =(double)pos1z;
+            moreZ = (double)pos2z;
+        }
+
+        if(dataConfig.getBoolean("is.On1")){
+
+            if(x>=lessX){
+
+                if(x<=moreX){
+
+                    if(z>=lessZ){
+
+                        if (z <= moreZ){
+
+                            if(y==pos1y+1){
+
+
+                                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        world.getBlockAt(new Location(world, x,y-1,z)).setType(Material.AIR);
+                                    }
+                                },20);
+                            }
+                        }
+                    }
+                }
+            }
+
+            //}
+
+
+        }
+
+
+
+        //}
+
+
+
+
+
+    }
+    public void replaceBlockBelowPlayer3(PlayerMoveEvent e){
+        Player player = e.getPlayer();
+        YamlConfiguration dataConfig =  Configuration.getDataConfig();
+        Location from = player.getLocation();
+
+        if(!Command.getPlayPlayers2().isPlayerOnList(player)){
+
+            return;
+        }
+
+        World world = player.getWorld();
+        double x = player.getLocation().getX();
+        double y = player.getLocation().getY();
+        double z = player.getLocation().getZ();
+        //if (world.getBlockAt(new Location(world,x,y-1,z)).getType() == Material.WOOL){
+        World loc1World,loc2World;
+
+        int pos1x,pos1y,pos1z,pos2x,pos2y,pos2z,length,width,area;
+        List<Block> blockArray = new ArrayList<Block>();
+        Location loc1= Command.getArena2().getLocation1();
+        Location loc2 = Command.getArena2().getLocation2();
+        loc1World = loc1.getWorld();
+        loc2World = loc2.getWorld();
+        pos1x = (int)loc1.getX();
+        pos1y = (int)loc1.getY();
+        pos1z = (int)loc1.getZ();
+        pos2x = (int)loc2.getX();
+        pos2y = (int)loc2.getY();
+        pos2z = (int)loc2.getZ();
+        double lessX,moreX,lessZ,moreZ;
+
+        if (pos1x > pos2x){
+            lessX = (double)pos2x;
+            moreX = (double)pos1x;
+        }
+        else{
+            lessX =(double)pos1x;
+            moreX = (double)pos2x;
+        }
+        if (pos1z > pos2z){
+            lessZ = (double)pos2z;
+            moreZ = (double)pos1z;
+        }
+        else{
+            lessZ =(double)pos1z;
+            moreZ = (double)pos2z;
+        }
+
+        if(dataConfig.getBoolean("is.On2")){
+
+            if(x>=lessX){
+
+                if(x<=moreX){
+
+                    if(z>=lessZ){
+
+                        if (z <= moreZ){
+
+                            if(y==pos1y+1){
+
+
+                                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        world.getBlockAt(new Location(world, x,y-1,z)).setType(Material.AIR);
+                                    }
+                                },20);
+                            }
+                        }
+                    }
+                }
+            }
+
+            //}
+
+
+        }
+
+
+
+        //}
+
+
+
+
+
+    }
+    public void replaceBlockBelowPlayer4(PlayerMoveEvent e){
+        Player player = e.getPlayer();
+        YamlConfiguration dataConfig =  Configuration.getDataConfig();
+        Location from = player.getLocation();
+
+        if(!Command.getPlayPlayers3().isPlayerOnList(player)){
+
+            return;
+        }
+
+        World world = player.getWorld();
+        double x = player.getLocation().getX();
+        double y = player.getLocation().getY();
+        double z = player.getLocation().getZ();
+        //if (world.getBlockAt(new Location(world,x,y-1,z)).getType() == Material.WOOL){
+        World loc1World,loc2World;
+
+        int pos1x,pos1y,pos1z,pos2x,pos2y,pos2z,length,width,area;
+        List<Block> blockArray = new ArrayList<Block>();
+        Location loc1= Command.getArena3().getLocation1();
+        Location loc2 = Command.getArena3().getLocation2();
+        loc1World = loc1.getWorld();
+        loc2World = loc2.getWorld();
+        pos1x = (int)loc1.getX();
+        pos1y = (int)loc1.getY();
+        pos1z = (int)loc1.getZ();
+        pos2x = (int)loc2.getX();
+        pos2y = (int)loc2.getY();
+        pos2z = (int)loc2.getZ();
+        double lessX,moreX,lessZ,moreZ;
+
+        if (pos1x > pos2x){
+            lessX = (double)pos2x;
+            moreX = (double)pos1x;
+        }
+        else{
+            lessX =(double)pos1x;
+            moreX = (double)pos2x;
+        }
+        if (pos1z > pos2z){
+            lessZ = (double)pos2z;
+            moreZ = (double)pos1z;
+        }
+        else{
+            lessZ =(double)pos1z;
+            moreZ = (double)pos2z;
+        }
+
+        if(dataConfig.getBoolean("is.On3")){
+
+            if(x>=lessX){
+
+                if(x<=moreX){
+
+                    if(z>=lessZ){
+
+                        if (z <= moreZ){
+
+                            if(y==pos1y+1){
+
+
+                                Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        world.getBlockAt(new Location(world, x,y-1,z)).setType(Material.AIR);
+                                    }
+                                },20);
+                            }
+                        }
+                    }
+                }
+            }
+
+            //}
+
+
+        }
+
+
+
+        //}
+
+
+
+
+
+    }
 }
