@@ -25,6 +25,10 @@ public class HotfootStart implements CommandExecutor {
                 commandSender.sendMessage("no");
                 return false;
             }
+            if(!(commandSender instanceof Player)){
+                commandSender.sendMessage(ChatColor.RED  + "Cannot execute command in console!");
+                return false;
+            }
             Player player = (Player) commandSender;
             if(!player.hasPermission("hf.start")){
                 return false;

@@ -50,9 +50,10 @@ public class HotfootJoin implements CommandExecutor {
             if(args.length==1){
                 int test=0;
                 for(int g = 0; g< same.size();g++){
-                    if(same.get(g).getListOfPlayers().indexOf(player)!=-1){
-                        same.get(g).getListOfPlayers().remove(g);
+                    if(same.get(g).getListOfPlayers().indexOf(player)!= -1){
+
                         player.teleport(same.get(g).getPrevCoords(player));
+                        same.get(g).getListOfPlayers().remove(same.get(g).getListOfPlayers().indexOf(player));
                         player.sendMessage(ChatColor.RED + "You have left Arena " + (g+1));
                     }
                     samex.get(g).setBlockArray();

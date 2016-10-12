@@ -1,8 +1,8 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="HotFoot3">
+  <artifact type="jar" build-on-make="true" name="Hotfoot3">
     <output-path>$USER_HOME$/Documents/server/pluginn/Magicblock/plugins</output-path>
-    <root id="archive" name="HotFoot3.jar">
-      <element id="module-output" name="HotFoot3" />
+    <root id="archive" name="Hotfoot3.jar">
+      <element id="module-output" name="Hotfoot3" />
       <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
     </root>
   </artifact>
