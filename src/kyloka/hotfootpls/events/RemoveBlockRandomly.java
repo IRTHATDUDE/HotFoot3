@@ -8,6 +8,7 @@ import kyloka.hotfootpls.config.Configuration;
 import kyloka.hotfootpls.players.PlayPlayer;
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -36,68 +37,15 @@ public class RemoveBlockRandomly {
                 same1.add(kyloka.hotfootpls.commands.Command.getPlayPlayers1());
                 same1.add(kyloka.hotfootpls.commands.Command.getPlayPlayers2());
                 same1.add(kyloka.hotfootpls.commands.Command.getPlayPlayers3());
+
                 for(int i = 0; i<same.size();i++){
                     if (dataConfig.getBoolean("is.On"+i)){
-                        World loc1World,loc2World;
-                        Bukkit.broadcastMessage("test:1");
-                        int pos1x,pos1y,pos1z,pos2x,pos2y,pos2z,length,width,area;
-                        List<Block> blockArray = new ArrayList<>();
-                        Location loc1 = same.get(i).getLocation1();
-                        Location loc2 = same.get(i).getLocation2();
-                        loc1World = loc1.getWorld();
-                        loc2World = loc2.getWorld();
-                        pos1x = (int)loc1.getX();
-                        pos1y = (int)loc1.getY();
-                        pos1z = (int)loc1.getZ();
-                        pos2x = (int)loc2.getX();
-                        pos2y = (int)loc2.getY();
-                        pos2z = (int)loc2.getZ();
-
-                        Bukkit.broadcastMessage("test:2");
-                        Location placeholderLoc;
-                        double lessX,moreX,lessZ,moreZ;
-                        if (pos1x > pos2x){
-                            lessX = (double)pos2x;
-                            moreX = (double)pos1x;
-                        }
-                        else{
-                            lessX =(double)pos1x;
-                            moreX = (double)pos2x;
-                        }
-                        if (pos1z > pos2z){
-                            lessZ = (double)pos2z;
-                            moreZ = (double)pos1z;
-                        }
-                        else{
-                            lessZ =(double)pos1z;
-                            moreZ = (double)pos2z;
-                        }
-                        length = (int)(moreX-lessX);
-                        width = (int)(moreZ-lessZ);
-
-
-                        area = Math.abs(length * width);
-                        double x;
-                        double y;
-                        double z;
-
-                        Bukkit.broadcastMessage("test:3");
-
-                        for (int li = 0; li < length; li++){
-                            for(int wi = 0; wi < width; wi++){
-
-                                placeholderLoc = new Location(loc1World,lessX + li,pos1y,lessZ + wi);
-                                Block placeholderBlock = loc1World.getBlockAt(placeholderLoc);
-                                blockArray.add(placeholderBlock);
-
-                            }
-
-                        }
-                        Bukkit.broadcastMessage("test:4");
+                        List<Block> blockArray = same.get(i).getBlockArray();
+                        double area = same.get(i).getArea();
                         Random rng = new Random();
 
 
-                        Bukkit.broadcastMessage("test:5");
+
                         for(int g = 0; g<3; g++){
                             RemoveBlockRandomly.checkBlock(blockArray,rng.nextInt(blockArray.size()));
                         }
@@ -118,7 +66,7 @@ public class RemoveBlockRandomly {
                             }
 
                         }
-                        Bukkit.broadcastMessage("test:6");
+
                         if(total == area){
                             dataConfig.set("is.On0",false);
                             Bukkit.broadcastMessage(ChatColor.BLUE + "Hot Foot Lokkin ate all the blocks!!");
@@ -147,7 +95,7 @@ public class RemoveBlockRandomly {
         if (!(same.get(rng).getType().equals(Material.AIR))){
 
             same.get(rng).setType(Material.AIR);
-            Bukkit.broadcastMessage(same.get(rng).getX() +" " + same.get(rng).getZ());
+
             total += 1;
         }
     }

@@ -3,7 +3,7 @@ package kyloka.hotfootpls.commands;
 import kyloka.hotfootpls.Main;
 import kyloka.hotfootpls.arena.Arena;
 import kyloka.hotfootpls.config.Configuration;
-import kyloka.hotfootpls.events.Editor;
+
 import kyloka.hotfootpls.players.PlayPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -22,7 +22,7 @@ public class Command {
     static PlayPlayer players1 = new PlayPlayer();
     static PlayPlayer players2 = new PlayPlayer();
     static PlayPlayer players3 = new PlayPlayer();
-    static Editor editor = new Editor();
+
     static Location loc1;
     static Location loc2;
     static Arena arena0 = new Arena("1");
@@ -38,7 +38,7 @@ public class Command {
     public static void registerCommands(){
 
 
-
+        instance.getCommand("hfreset").setExecutor(new HotFootReset());
         instance.getCommand("hfjoin").setExecutor(new HotfootJoin());
         instance.getCommand("hfleave").setExecutor(new HotfootLeave());
         //instance.getCommand("hfcreate").setExecutor(new HotfootCreate());
@@ -57,6 +57,11 @@ public class Command {
         Configuration.getDataConfig().set("is.On3",false);
         Configuration.saveDataConfig();
         registerArena();
+
+        arena0.setBlockArray();
+        arena1.setBlockArray();
+        arena2.setBlockArray();
+        arena3.setBlockArray();
     }
     public static void registerArena(){
         YamlConfiguration dataConfig = Configuration.getDataConfig();
@@ -104,9 +109,7 @@ public class Command {
         return players3;
     }
 
-    public static Editor getEditor() {
-        return editor;
-    }
+
     public static void setloc1(Location loc){
         loc1 = loc;
     }

@@ -24,7 +24,7 @@ public class RemoveBlockUnderPlayerEvent implements Listener {
 
     @EventHandler
     public void replaceBlockBelowPlayer1(PlayerMoveEvent e){
-        Bukkit.broadcastMessage("hi:1");
+
         Player player = e.getPlayer();
         YamlConfiguration dataConfig =  Configuration.getDataConfig();
         Location from = player.getLocation();
@@ -112,8 +112,9 @@ public class RemoveBlockUnderPlayerEvent implements Listener {
 
 
     }
+    @EventHandler
     public void replaceBlockBelowPlayer2(PlayerMoveEvent e){
-        Bukkit.broadcastMessage("hi:2");
+
         Player player = e.getPlayer();
         YamlConfiguration dataConfig =  Configuration.getDataConfig();
         Location from = player.getLocation();
@@ -122,7 +123,7 @@ public class RemoveBlockUnderPlayerEvent implements Listener {
 
             return;
         }
-        Bukkit.broadcastMessage("hi:2");
+        
         World world = player.getWorld();
         double x = player.getLocation().getX();
         double y = player.getLocation().getY();
@@ -201,6 +202,7 @@ public class RemoveBlockUnderPlayerEvent implements Listener {
 
 
     }
+    @EventHandler
     public void replaceBlockBelowPlayer3(PlayerMoveEvent e){
         Player player = e.getPlayer();
         YamlConfiguration dataConfig =  Configuration.getDataConfig();
@@ -289,6 +291,7 @@ public class RemoveBlockUnderPlayerEvent implements Listener {
 
 
     }
+    @EventHandler
     public void replaceBlockBelowPlayer4(PlayerMoveEvent e){
         Player player = e.getPlayer();
         YamlConfiguration dataConfig =  Configuration.getDataConfig();

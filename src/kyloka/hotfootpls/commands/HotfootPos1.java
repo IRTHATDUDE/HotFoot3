@@ -32,6 +32,9 @@ public class HotfootPos1 implements CommandExecutor {
             same.add(kyloka.hotfootpls.commands.Command.getArena3());
 
             Player player = (Player)sender;
+            if(!player.hasPermission("hf.start")){
+                return false;
+            }
             for(int i = 0; i<4;i++){
                 if(args[0].equalsIgnoreCase(same.get(i).getName())){
                     Location loc = player.getLocation();

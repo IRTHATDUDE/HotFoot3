@@ -18,6 +18,13 @@ commands:
   hfpos1:
     description: same
   hfpos2:
-    description: same
+    description: Set position for
   hflist:
-    description: same
+    description: Get the list of Arena available
+  hfreset:
+    description: reset the arena
+
+permissions:
+  hf.start:
+    description: Admin of Hotfoot
+    default: op

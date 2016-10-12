@@ -4,9 +4,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,11 +27,14 @@ public class Arena {
     double loca2X;
     double loca2Y;
     double loca2Z;
-    List<Block> blockArray;
+    List<Block> blockList;
     YamlConfiguration dataConfig = kyloka.hotfootpls.config.Configuration.getDataConfig();
+    double a;
+    List<BlockState> test12;
 
     public Arena(String name){
         n = name;
+
     }
     public void setLocation1(Location loc1){
         loca1 = loc1;
@@ -44,6 +49,7 @@ public class Arena {
         kyloka.hotfootpls.config.Configuration.saveDataConfig();
 
     }
+
     public void setLocation2(Location loc2){
         loca2 = loc2;
         loca2X = loca2.getX();
@@ -56,6 +62,7 @@ public class Arena {
         dataConfig.set(n+".pos2.world",world2);
         kyloka.hotfootpls.config.Configuration.saveDataConfig();
     }
+
     public String getName(){
         if(n==null)return null;
         return n;
@@ -67,7 +74,12 @@ public class Arena {
         return true;
     }
     public List<Block> getBlockArray() {
+        return blockList;
+    }
+    public void setBlockArray(){
         Location placeholderLoc;
+        List<Block> blockArray = new ArrayList<>();
+        List<BlockState> test = new ArrayList<>();
         double lessX, moreX, lessZ, moreZ;
         if (loca1X > loca2X) {
             lessX = loca2X;
@@ -88,14 +100,25 @@ public class Arena {
 
         World loc1World = Bukkit.getWorld(world1);
         double area = Math.abs(length * width);
+        a = area;
         for (int li = 0; li < length; li++) {
             for (int wi = 0; wi < width; wi++) {
                 placeholderLoc = new Location(loc1World, lessX + li, loca1Y, lessZ + wi);
                 Block placeholderBlock = loc1World.getBlockAt(placeholderLoc);
+                BlockState samed = loc1World.getBlockAt(placeholderLoc).getState();
                 blockArray.add(placeholderBlock);
+                test.add(samed);
             }
         }
-        return blockArray;
+        test12 = test;
+        blockList = blockArray;
+
+    }
+    public double getArea(){
+        return a;
+    }
+    public List<BlockState> getTest12(){
+        return test12;
     }
 
 

@@ -15,25 +15,14 @@ public class HotfootList implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if(command.getName().equalsIgnoreCase("hflist")){
-            String test = ChatColor.BLUE +  "The Available Arenas are: ";
+            String test = ChatColor.BLUE +  "The Available Arenas are: 1, 2, 3, 4";
             List<Arena> same = new ArrayList<>();
             same.add(kyloka.hotfootpls.commands.Command.getArena0());
             same.add(kyloka.hotfootpls.commands.Command.getArena1());
             same.add(kyloka.hotfootpls.commands.Command.getArena2());
             same.add(kyloka.hotfootpls.commands.Command.getArena3());
 
-                if(kyloka.hotfootpls.commands.Command.getArena0().isAble()){
-                    test += same.get(0).getName();
-                }
-            if(kyloka.hotfootpls.commands.Command.getArena1().isAble()){
-                test +=" " + same.get(1).getName();
-            }
-            if(kyloka.hotfootpls.commands.Command.getArena2().isAble()){
-                test += " " + same.get(2).getName();
-            }
-            if(kyloka.hotfootpls.commands.Command.getArena3().isAble()){
-                test += " " + same.get(3).getName();
-            }
+
             sender.sendMessage(test);
         }
         return false;

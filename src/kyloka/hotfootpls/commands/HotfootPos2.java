@@ -32,7 +32,10 @@ public class HotfootPos2 implements CommandExecutor {
             same.add(kyloka.hotfootpls.commands.Command.getArena2());
             same.add(kyloka.hotfootpls.commands.Command.getArena3());
 
-            Player player = (Player)sender;
+            Player player = (Player) sender;
+            if(!player.hasPermission("hf.start")){
+                return false;
+            }
             for(int i = 0; i<4;i++){
                 if(args[0].equalsIgnoreCase(same.get(i).getName())){
                     Location loc = player.getLocation();
@@ -44,6 +47,10 @@ public class HotfootPos2 implements CommandExecutor {
 
                     player.sendMessage("You have selected " + x +","+y+","+z+" for Position 2 Arena " + same.get(i).getName());
                     same.get(i).setLocation2(loc);
+                    kyloka.hotfootpls.commands.Command.arena0.setBlockArray();
+                    kyloka.hotfootpls.commands.Command.arena1.setBlockArray();
+                    kyloka.hotfootpls.commands.Command.arena2.setBlockArray();
+                    kyloka.hotfootpls.commands.Command.arena3.setBlockArray();
                 }
             }
 

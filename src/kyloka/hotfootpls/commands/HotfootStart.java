@@ -1,10 +1,17 @@
 package kyloka.hotfootpls.commands;
 
+import kyloka.hotfootpls.Main;
 import kyloka.hotfootpls.config.Configuration;
+import kyloka.hotfootpls.players.PlayPlayer;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.*;
 import org.bukkit.command.Command;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Matthew on 10/7/2016.
@@ -18,34 +25,62 @@ public class HotfootStart implements CommandExecutor {
                 commandSender.sendMessage("no");
                 return false;
             }
-            if (args[0].equalsIgnoreCase("1")){
-                dataConfig.set("is.On0",true);
-                Bukkit.broadcastMessage("Hotfoot Arena 1 started!");
-                Configuration.saveDataConfig();
-                return true;
-
+            Player player = (Player) commandSender;
+            if(!player.hasPermission("hf.start")){
+                return false;
             }
-            if (args[0].equalsIgnoreCase("2")){
-                dataConfig.set("is.On1",true);
-                Bukkit.broadcastMessage("Hotfoot Arena 2 started!");
-                Configuration.saveDataConfig();
-                return true;
+            int test = 0;
+            List<PlayPlayer> derp = new ArrayList<>();
+            derp.add(kyloka.hotfootpls.commands.Command.getPlayPlayers0());
+            derp.add(kyloka.hotfootpls.commands.Command.getPlayPlayers1());
+            derp.add(kyloka.hotfootpls.commands.Command.getPlayPlayers2());
+            derp.add(kyloka.hotfootpls.commands.Command.getPlayPlayers3());
 
-            }
-            if (args[0].equalsIgnoreCase("3")){
-                dataConfig.set("is.On2",true);
-                Bukkit.broadcastMessage("Hotfoot Arena 3 started!");
-                Configuration.saveDataConfig();
-                return true;
+            for(int i = 0; i<derp.size();i++){
+                commandSender.sendMessage(String.valueOf(i+1));
+                if (args[0].equalsIgnoreCase(String.valueOf(i+1))&& (!derp.get(i).getListOfPlayers().isEmpty())){
 
-            }
-            if (args[0].equalsIgnoreCase("4")){
-                dataConfig.set("is.On3",true);
-                Bukkit.broadcastMessage("Hotfoot Arena 4 started!");
-                Configuration.saveDataConfig();
-                return true;
+                    final int d = i;
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                        @Override
+                        public void run() {
+                            Bukkit.broadcastMessage(ChatColor.GOLD + "Hotfoot Arena " + (d+1) +" is starting in 3...");
+                        }
+                    },20);
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                        @Override
+                        public void run() {
+                            Bukkit.broadcastMessage(ChatColor.GOLD + "Hotfoot Arena " + (d+1) +" is starting in 2...");
+                        }
+                    },40);
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                        @Override
+                        public void run() {
+                            Bukkit.broadcastMessage(ChatColor.GOLD + "Hotfoot Arena " + (d+1) +" is starting in 1...");
+                        }
+                    },60);
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(Main.getInstance(), new Runnable() {
+                        @Override
+                        public void run() {
+                            dataConfig.set("is.On"+ d,true);
+                            Bukkit.broadcastMessage("Hotfoot Arena" + (d+1) + "started!");
+                            Configuration.saveDataConfig();
+                        }
+                    },80);
 
+                    test+=1;
+                    return true;
+
+                }
             }
+
+
+
+            if(test==0){
+                commandSender.sendMessage(ChatColor.RED + "No player joined the game");
+            }
+
+
 
             return true;
         }
