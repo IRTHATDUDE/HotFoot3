@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f94ef65a-e21c-471b-b84b-1303cfd0297c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotFootReset.java" afterPath="$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotFootReset.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotfootStart.java" afterPath="$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotfootStart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotfootStop.java" afterPath="$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotfootStop.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin.yml" afterPath="$PROJECT_DIR$/plugin.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotfootTest.java" afterPath="$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotfootTest.java" />
     </list>
     <ignored path="Hotfoot3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,11 +55,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HotfootStop.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HotfootStop.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotfootStop.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="527">
               <caret line="41" column="61" selection-start-line="41" selection-start-column="61" selection-end-line="41" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HotfootTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotfootTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plugin.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/plugin.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -126,6 +145,8 @@
         <option value="$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotFootReset.java" />
         <option value="$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotfootStart.java" />
         <option value="$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotfootStop.java" />
+        <option value="$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotfootTest.java" />
+        <option value="$PROJECT_DIR$/plugin.yml" />
       </list>
     </option>
   </component>
@@ -359,12 +380,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1476300707459</updated>
-      <workItem from="1476300710991" duration="7886000" />
+      <workItem from="1476300710991" duration="9019000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7886000" />
+    <option name="totallyTimeSpent" value="9019000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -474,6 +495,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="41" column="61" selection-start-line="41" selection-start-column="61" selection-end-line="41" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/kyloka/hotfootpls/commands/HotfootTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
           <folding />
         </state>
       </provider>

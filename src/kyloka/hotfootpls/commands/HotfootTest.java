@@ -20,7 +20,7 @@ public class HotfootTest implements CommandExecutor {
                 return false;
             }
             Player player = (Player) sender;
-            YamlConfiguration dataConfig = Configuration.getDataConfig();
+            player.sendMessage("bleh");
 
 
         }

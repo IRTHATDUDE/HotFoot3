@@ -7,18 +7,16 @@ commands:
     description: To join the game!
   hfleave:
     description: To leave the game!
-  hfcreate:
-    description: to create a region!
   hftest:
-    description: same
+    description: bleh
   hfstart:
-    description: same
+    description: starts the game!
   hfstop:
-    description: same
+    description: stops the game!
   hfpos1:
-    description: same
+    description: Set position for the first corner.
   hfpos2:
-    description: Set position for
+    description: Set position for the second corner.
   hflist:
     description: Get the list of Arena available
   hfreset:
