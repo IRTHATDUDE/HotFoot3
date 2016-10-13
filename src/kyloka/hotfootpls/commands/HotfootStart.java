@@ -22,7 +22,7 @@ public class HotfootStart implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (command.getName().equalsIgnoreCase("hfstart")){
             if(args.length == 0){
-                commandSender.sendMessage("no");
+                commandSender.sendMessage(ChatColor.RED + "You need to select an arena!");
                 return false;
             }
             if(!(commandSender instanceof Player)){
@@ -67,7 +67,8 @@ public class HotfootStart implements CommandExecutor {
                         @Override
                         public void run() {
                             dataConfig.set("is.On"+ d,true);
-                            Bukkit.broadcastMessage("Hotfoot Arena" + (d+1) + "started!");
+                            Bukkit.broadcastMessage(ChatColor.GOLD + "Hotfoot Arena" + (d+1) + "started!");
+                            Bukkit.broadcast(ChatColor.GOLD + "Hotfoot Arena " + (d+1) + " has been started by " + player.getName(),"hf.start");
                             Configuration.saveDataConfig();
                         }
                     },80);

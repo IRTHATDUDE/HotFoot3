@@ -1,6 +1,8 @@
 package kyloka.hotfootpls.commands;
 
 import kyloka.hotfootpls.arena.Arena;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
@@ -21,20 +23,34 @@ public class HotFootReset implements CommandExecutor {
         if(command.getName().equalsIgnoreCase("hfreset")){
             if(!(sender instanceof Player)){
                 sender.sendMessage("Please dont use this command on console");
+                return false;
+            }
+            if(args.length==0){
+                sender.sendMessage(ChatColor.RED + "You must select an arena to reset!");
+                return false;
             }
             List<Arena> same = new ArrayList<>();
             same.add(kyloka.hotfootpls.commands.Command.getArena0());
             same.add(kyloka.hotfootpls.commands.Command.getArena1());
             same.add(kyloka.hotfootpls.commands.Command.getArena2());
             same.add(kyloka.hotfootpls.commands.Command.getArena3());
-            List<BlockState> test = same.get(0).getTest12();
-            List<Block> test1 = same.get(0).getBlockArray();
+            Bukkit.broadcast(ChatColor.YELLOW + "Arena " + args[0] + "is going to reset!","hf.start");
 
-            for(int i = 0; i<test1.size();i++){
 
-                test1.get(i).setType(test.get(i).getType());
-                test1.get(i).setData(test.get(i).getData().getData());
+
+            for (int i = 0; i < same.size(); i++){
+                if(same.get(i).getName().equals(args[0])){
+                    List<BlockState> test = same.get(i).getTest12();
+                    List<Block> test1 = same.get(i).getBlockArray();
+                        for(int g = 0; g<test.size();g++){
+                            test1.get(g).setType(test.get(g).getType());
+                            test1.get(g).setData(test.get(g).getData().getData());
+                        }
+                    break;
+                }
+
             }
+
         }
         return false;
     }
