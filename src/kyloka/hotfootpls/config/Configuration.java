@@ -4,6 +4,7 @@ import kyloka.hotfootpls.Main;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Matthew on 10/3/2016.
@@ -43,6 +44,7 @@ public class Configuration {
             if(!dataFile.exists()){
                 dataFile.createNewFile();
                 dataConfig.load(dataFile);
+                setPlayerDataConfig();
             }
 
             configConfig.load(configFile);
@@ -50,6 +52,21 @@ public class Configuration {
             dataConfig.load(dataFile);
         }catch(Exception e){
             e.printStackTrace();
+        }
+
+    }
+    public static void setPlayerDataConfig(){
+        YamlConfiguration dataConfig = getDataConfig();
+        for (int i = 1; i<5;i++){
+            dataConfig.set(i+".pos1.x",0);
+            dataConfig.set(i+".pos1.y",0);
+            dataConfig.set(i+".pos1.z",0);
+            dataConfig.set(i+".pos1.world","world");
+            dataConfig.set(i+".pos2.x",0);
+            dataConfig.set(i+".pos2.y",0);
+            dataConfig.set(i+".pos2.z",0);
+            dataConfig.set(i+".pos2.world","world");
+            saveDataConfig();
         }
     }
     public static YamlConfiguration getPlayerDataConfig(){

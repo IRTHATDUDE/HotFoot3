@@ -71,13 +71,12 @@ public class Command {
         same.add(kyloka.hotfootpls.commands.Command.getArena2());
         same.add(kyloka.hotfootpls.commands.Command.getArena3());
         for(int i = 1; i < 5; i++){
-            if((!(dataConfig.getInt(i+".pos1.x") == 0))||(!(dataConfig.getInt(i+".pos2.x")==0))){
 
                 double loc1X = dataConfig.getDouble(i+".pos1.x");
                 double loc1Y= dataConfig.getDouble(i+".pos1.y");
                 double loc1Z= dataConfig.getDouble(i+".pos1.z");
                 String loc1World = dataConfig.getString(i+".pos1.world");
-                String loc2World = dataConfig.getString(i+".pos1.world");
+                String loc2World = dataConfig.getString(i+".pos2.world");
                 double loc2X = dataConfig.getDouble(i+".pos2.x");
                 double loc2Y= dataConfig.getDouble(i+".pos2.y");
                 double loc2Z= dataConfig.getDouble(i+".pos2.z");
@@ -88,10 +87,10 @@ public class Command {
                     return;
                 }
 
-
+                Main.getInstance().getLogger().info(tempLoc1.toString());
                 same.get(i-1).setLocation1(tempLoc1);
                 same.get(i-1).setLocation2(tempLoc2);
-            }
+
         }
 
 

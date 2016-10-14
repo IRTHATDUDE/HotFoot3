@@ -94,7 +94,7 @@ public class RemoveBlockRandomly extends BukkitRunnable {
     public static void checkBlock(List<Block> same,int randomNumber){
 
         int rng = randomNumber;
-        if (!(same.get(rng).getType().equals(Material.AIR))){
+        if (!same.get(rng).getType().equals(Material.AIR)){
 
             same.get(rng).setType(Material.AIR);
 

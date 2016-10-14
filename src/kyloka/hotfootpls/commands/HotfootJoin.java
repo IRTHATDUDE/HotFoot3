@@ -65,14 +65,22 @@ public class HotfootJoin implements CommandExecutor {
                         if(args[0].equalsIgnoreCase(String.valueOf(i+1))){
                             List<Block> tempBlock = samex.get(i).getBlockArray();
                             Random rng = new Random();
-                            int v = rng.nextInt(tempBlock.size()-1);
+                            try{
+                                rng.nextInt(tempBlock.size());
+
+                            }
+                            catch(IllegalArgumentException e ){
+                                player.sendMessage(ChatColor.RED + "The Arena you are trying to join has not been setup!");
+                                return false;
+                            }
+                            int v = rng.nextInt(tempBlock.size());
                             Location tempLoc = new Location(tempBlock.get(v).getWorld(),tempBlock.get(v).getX(),tempBlock.get(v).getY()+1,tempBlock.get(v).getZ());
 
                             same.get(i).addPlayer(player);
                             same.get(i).setPrevCoords(player,player.getLocation().getX(),player.getLocation().getY(),player.getLocation().getZ(),player.getWorld());
                             player.teleport(tempLoc);
                             player.sendMessage(ChatColor.GREEN + "You have joined Arena " + (i+1) + "!");
-                            test +=1;
+                            test++;
                             Bukkit.broadcast(player.getName() + " has joined Arena " + (i+1)+"!","hf.start" );
                             break;
 
