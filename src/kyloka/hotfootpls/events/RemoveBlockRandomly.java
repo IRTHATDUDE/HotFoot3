@@ -11,20 +11,22 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
+import java.util.concurrent.RunnableFuture;
+
 /**
  * Created by Matthew on 10/9/2016.
  */
-public class RemoveBlockRandomly {
+public class RemoveBlockRandomly extends BukkitRunnable {
     static YamlConfiguration dataConfig = Configuration.getDataConfig();
     static int total = 0;
 
-    public static void justDoIt(){
-
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), new Runnable() {
             @Override
             public void run() {
+
+
                 List<Arena> same = new ArrayList<>();
                 same.add(kyloka.hotfootpls.commands.Command.getArena0());
                 same.add(kyloka.hotfootpls.commands.Command.getArena1());
@@ -87,8 +89,8 @@ public class RemoveBlockRandomly {
 
 
             }
-        },0,20);
-    }
+
+
     public static void checkBlock(List<Block> same,int randomNumber){
 
         int rng = randomNumber;

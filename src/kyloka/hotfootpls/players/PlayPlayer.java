@@ -22,11 +22,9 @@ public class PlayPlayer {
         int tempInt = listOfPlayers.indexOf(player);
         if(tempInt != -1){
             listOfPlayers.remove(tempInt);
-            return;
         }
         else{
             Bukkit.getLogger().log(Level.WARNING,player + " isn't on the list![1]");
-            return;
         }
     }
     public void setPrevCoords(Player player,double x,double y,double z, World world){
@@ -56,12 +54,7 @@ public class PlayPlayer {
     }
     public Boolean isPlayerOnList(Player player){
         int tempInt = listOfPlayers.indexOf(player);
-        if(tempInt != -1){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return tempInt !=-1;
     }
 
 }

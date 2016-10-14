@@ -5,26 +5,27 @@ import kyloka.hotfootpls.config.Configuration;
 import kyloka.hotfootpls.events.Events;
 import kyloka.hotfootpls.events.RemoveBlockRandomly;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 /**
  * Created by Matthew on 10/3/2016.
  */
 public class Main extends JavaPlugin {
-    static Main instance;
+    private static Main instance;
     @Override
     public void onEnable() {
-        super.onEnable();
+
         instance = this;
+
         Configuration.loadAllConfigs();
         Command.registerCommands();
         Events.registerEvents();
-        RemoveBlockRandomly.justDoIt();
+        BukkitTask TaskName = new RemoveBlockRandomly().runTaskTimer(this, 0, 20);
+
+
     }
 
-    @Override
-    public void onDisable() {
-        super.onDisable();
-    }
+
     public static Main getInstance(){
         return instance;
     }

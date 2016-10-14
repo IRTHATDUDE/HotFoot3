@@ -1,7 +1,7 @@
 main: kyloka.hotfootpls.Main
 name: Hotfoot
 authors: [nayoshi12, zLokkiN]
-version: 0.2
+version: 1.1
 commands:
   hfjoin:
     description: To join the game!

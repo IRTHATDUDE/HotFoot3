@@ -12,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,23 @@ public class RemovePlayerEvent implements Listener {
         }
 
 
+
+    }
+    @EventHandler
+    public void removePlayerKick(PlayerQuitEvent e){
+        Player player = e.getPlayer();
+        List<PlayPlayer> same = new ArrayList<>();
+        same.add(Command.getPlayPlayers0());
+        same.add(Command.getPlayPlayers1());
+        same.add(Command.getPlayPlayers2());
+        same.add(Command.getPlayPlayers3());
+        for(int i = 0; i<same.size();i++){
+            if(same.get(i).isPlayerOnList(player)){
+                Bukkit.broadcast(player.getName()+" has left the Arena","hf.start");
+                same.get(i).removePlayer(player);
+                break;
+            }
+        }
 
     }
 }
