@@ -95,7 +95,7 @@ public class RemoveBlockRandomly extends BukkitRunnable {
 
         int rng = randomNumber;
         if (!same.get(rng).getType().equals(Material.AIR)){
-
+            System.out.print("hi");
             same.get(rng).setType(Material.AIR);
 
             total += 1;

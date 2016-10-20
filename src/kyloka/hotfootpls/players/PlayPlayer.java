@@ -33,7 +33,7 @@ public class PlayPlayer {
             Bukkit.getLogger().log(Level.WARNING,player.getName() + "isn't on the list![2]");
             return;
         }
-        Player player1 = listOfPlayers.get(tempInt);
+
         Location tempLoc = new Location(world,x,y,z);
         listOfPrevLocation.add(tempInt,tempLoc);
     }

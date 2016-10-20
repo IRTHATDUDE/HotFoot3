@@ -103,11 +103,11 @@ public class Arena {
         double width = (int) (moreZ - lessZ);
 
         World loc1World = Bukkit.getWorld(world1);
-        double area = Math.abs(length * width);
+        double area = Math.abs((length + 1) * (width + 1));
         a = area;
-        for (int li = 0; li < length; li++) {
-            for (int wi = 0; wi < width; wi++) {
-                placeholderLoc = new Location(loc1World, lessX + li, loca1Y, lessZ + wi);
+        for (double li = lessX; li < moreX; li++) {
+            for (double wi = lessZ; wi < moreZ; wi++) {
+                placeholderLoc = new Location(loc1World, li, loca1Y, wi);
                 Block placeholderBlock = loc1World.getBlockAt(placeholderLoc);
                 BlockState samed = loc1World.getBlockAt(placeholderLoc).getState();
                 blockArray.add(placeholderBlock);
