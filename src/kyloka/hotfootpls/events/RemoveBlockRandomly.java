@@ -71,7 +71,7 @@ public class RemoveBlockRandomly extends BukkitRunnable {
 
                         if(total == area){
                             dataConfig.set("is.On0",false);
-                            Bukkit.broadcastMessage(ChatColor.BLUE + "Hot Foot Lokkin ate all the blocks!!");
+                            Bukkit.broadcastMessage(ChatColor.BLUE + "Seems like there are no more blocks to remove");
                             Configuration.saveDataConfig();
                         }
                         return;
